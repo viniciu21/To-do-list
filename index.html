@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>TO DO LIST</title>
+</head>
+<body>
+    <div class="title">
+        <h1>My To Do List</h1>
+        <input id="myInput" type="text" name="ToDo" placeholder="Input" value="">
+        <button class="input">ADD</button>
+    </div>
+    <ul class="putHere">
+    </ul>
+    <script>
+        const button = document.querySelector('button')
+        button.onclick = e => {
+            const ul = document.querySelector('ul')
+            const li = document.createElement('li')
+            const input = document.querySelector('input').value
+            const span = document.createElement('span')
+            const txt = document.createTextNode(input)
+            const del = document.createTextNode('x')
+            span.appendChild(del)
+            li.appendChild(txt)
+            li.appendChild(span)
+            ul.appendChild(li)
+            document.getElementById("myInput").value = "";
+            span.className = 'close'
+            span.id = 'delete'
+            const deleteNode = document.getElementsByClassName('close')
+            for (let i = 0; i< deleteNode.length; i++) {
+                const element = deleteNode[i];
+                element.onclick = e =>{
+                    element.style.display = 'none'
+                    element.parentNode.style.display = 'none'
+                }
+            }
+        }
+    </script>
+</body>
+</html>
